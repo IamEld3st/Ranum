@@ -1,4 +1,4 @@
-package com.develd.ranum;
+package com.develdsoft.ranum;
 
 import java.awt.EventQueue;
 
@@ -20,10 +20,10 @@ public class Main {
 	public boolean Restarted = true;
 	public int minval;
 	public int maxval;
+	public int arrayMax;
 	public int arrayCountHolder = 0;
 	public Random rand =  new Random();
 	public List<String> genNumList = new ArrayList<String>();
-	public boolean genBool = false;
 	public String resultRand;
 	
 	private JFrame frmRanum;
@@ -113,7 +113,7 @@ public class Main {
 		btnGenerate.setBounds(10, 91, 80, 23);
 		frmRanum.getContentPane().add(btnGenerate);
 		
-		JLabel lblCredits = new JLabel("by Andrzej Szczepaniak");
+		JLabel lblCredits = new JLabel("by develdsoft.com");
 		lblCredits.setFont(new Font("Arial", Font.PLAIN, 10));
 		lblCredits.setBounds(96, 123, 133, 14);
 		frmRanum.getContentPane().add(lblCredits);
@@ -145,6 +145,8 @@ public class Main {
 				    textFieldEnd.setEditable(false);
 				    System.out.println("Maximal Value: "+maxval+" | Locked Max Value!");
 				    Restarted = false;
+				    arrayMax = maxval - minval + 1;
+				    System.out.println("Maximum Array Number set to: "+arrayMax);
 				    arrayCountHolder += 1;
 				    resultRand = Integer.toString(randomInteger(minval, maxval));
 				    System.out.println("Random Value: "+resultRand+" | Array Usage: "+arrayCountHolder);
@@ -157,7 +159,7 @@ public class Main {
 				}
 				genNumList.add(resultRand);
 			    textFieldResult.setText(resultRand);
-			    if(arrayCountHolder == maxval) {
+			    if(arrayCountHolder == arrayMax) {
 			    	System.out.println("All numbers in range Generated!");
 			    	btnGenerate.setEnabled(false);
 			    }
